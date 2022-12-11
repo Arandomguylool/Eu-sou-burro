@@ -1061,10 +1061,6 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
-			case "stage":
-				dad.x += 100;
-				boyfriend.x += 100;
-				gf.x += 100;
 		}
 		if (curStage == 'limo')
 			add(limo);
@@ -1073,7 +1069,6 @@ class PlayState extends MusicBeatState
 			add(limoSpeaker);
 		// Shitty layering but whatev it works LOL
 		
-
 		add(dad);
 		add(boyfriend);
 		
@@ -1082,56 +1077,6 @@ class PlayState extends MusicBeatState
 
 		if(curStage == 'limo')
 			add(fastCar);
-
-		if(curStage == "stage")
-		{
-			stageLights = new Sprite(-24, -115).loadGraphics(Paths.image('week1/stageLight'));
-			stageLights.setGraphicSize(Std.int(stageLights.width * 1.9));
-			stageLights.updateHitbox();
-			stageLights.antialiasing = true;
-			stageLights.scrollFactor.set(1.25, 1.25);
-			stageLights.active = false;
-			
-			stageCurtains = new Sprite(-980, -553).loadGraphics(Paths.image('week1/stagecurtains'));
-			stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 1.9));
-			stageCurtains.updateHitbox();
-			stageCurtains.antialiasing = true;
-			stageCurtains.scrollFactor.set(1.3, 1.3);
-			stageCurtains.active = false;
-
-			backDudes = new Sprite(-1040, 619 + 500); // showing pos is y:500+;
-			backDudes.frames = Paths.getSparrowAtlas("week1/back_dudes");
-			backDudes.animation.addByPrefix("idle", "back dudes", 24, false);
-			backDudes.animation.play("idle", true);
-			backDudes.antialiasing = true;
-			backDudes.setGraphicSize(Std.int(backDudes.width * 2));
-			backDudes.updateHitbox();
-			backDudes.scrollFactor.set(1.6, 1.6);
-
-			centralDudes = new Sprite(-1228, 677 + 500); // showing pos is y:500+;
-			centralDudes.frames = Paths.getSparrowAtlas("week1/central_dudes");
-			centralDudes.animation.addByPrefix("idle", "mid dudes", 24, false);
-			centralDudes.animation.play("idle", true);
-			centralDudes.antialiasing = true;
-			centralDudes.setGraphicSize(Std.int(centralDudes.width * 2));
-			centralDudes.updateHitbox();
-			centralDudes.scrollFactor.set(1.5, 1.5);
-
-			frontDudes = new Sprite(-1033, 673 + 500); // showing pos is y:500+;
-			frontDudes.frames = Paths.getSparrowAtlas("week1/front_dudes");
-			frontDudes.animation.addByPrefix("idle", "front dudes", 24, false);
-			frontDudes.animation.play("idle", true);
-			frontDudes.antialiasing = true;
-			frontDudes.setGraphicSize(Std.int(frontDudes.width * 2));
-			frontDudes.updateHitbox();
-			frontDudes.scrollFactor.set(1.35, 1.35);
-			
-			add(stageLights);
-			add(stageCurtains);
-			add(frontDudes);
-			add(centralDudes);
-			add(backDudes);
-		}
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
