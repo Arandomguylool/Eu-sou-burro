@@ -359,8 +359,6 @@ class Character extends Sprite
 				var tex = Paths.getSparrowAtlas('characters/PITROZITO', 'shared');
 				frames = tex;
 
-				trace(tex.frames.length);
-
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
@@ -401,8 +399,6 @@ class Character extends Sprite
 			case 'bf-chair':
 				var tex = Paths.getSparrowAtlas('characters/PITROZITO_CHAIR', 'shared');
 				frames = tex;
-
-				trace(tex.frames.length);
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
@@ -445,8 +441,6 @@ class Character extends Sprite
 				var tex = Paths.getSparrowAtlas('characters/PITROZITO_M', 'shared');
 				frames = tex;
 
-				trace(tex.frames.length);
-
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
@@ -486,8 +480,6 @@ class Character extends Sprite
 			case 'bf-core':
 				var tex = Paths.getSparrowAtlas('characters/PITROZITO', 'shared');
 				frames = tex;
-
-				trace(tex.frames.length);
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
@@ -529,8 +521,6 @@ class Character extends Sprite
 			case 'bf-demon':
 				var tex = Paths.getSparrowAtlas('characters/PITROZITO_DEMON', 'shared');
 				frames = tex;
-
-				trace(tex.frames.length);
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
