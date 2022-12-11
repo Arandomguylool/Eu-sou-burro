@@ -174,7 +174,7 @@ class TitleState extends MusicBeatState
 		titleText.antialiasing = true;
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
-		//titleText.y = 0;
+		titleText.y = 0;
 		// titleText.screenCenter(X);
 		add(titleText);
 
@@ -287,13 +287,6 @@ class TitleState extends MusicBeatState
 
 			transitioning = true;
 			// FlxG.sound.music.stop();
-			FlxTween.cancelTweensOf(logoBl);
-			FlxTween.cancelTweensOf(logoTE);
-			FlxTween.cancelTweensOf(gfDance);
-			FlxTween.tween(logoBl, {y: 2000}, 0.8, {ease: FlxEase.quadInOut});
-			FlxTween.tween(logoTE, {y: 2000}, 0.8, {ease: FlxEase.quadInOut, startDelay: 0.4});
-			FlxTween.tween(gfDance, {y: 2000}, 0.8, {ease: FlxEase.quadInOut, startDelay: 0.425});
-			FlxTween.tween(titleText, {y: 2000}, 0.8, {ease: FlxEase.quadInOut, startDelay: 0.45});
 			
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
@@ -417,18 +410,6 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 			skippedIntro = true;
-			FlxTween.tween(logoBl, {y: -50}, 0.8, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween)
-				{
-					FlxTween.tween(logoTE, {x: 580}, 0.5, {ease: FlxEase.quadInOut});
-					FlxTween.tween(gfDance, {y: 100}, 0.5, {ease: FlxEase.quadInOut});
-					FlxTween.tween(titleText, {y: FlxG.height * 0.725}, 0.5, {ease: FlxEase.quadInOut, onComplete: function(twn2:FlxTween)
-					{
-						FlxTween.tween(logoBl, {y: -50 + 50}, 2.5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 1.2});
-						FlxTween.tween(gfDance, {y: -30 + 100}, 2.5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 1.2});
-						FlxTween.tween(logoTE, {y: 450 - 30}, 2.5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 1.2});
-						
-					}});
-				}});
 				
 		}
 	}
