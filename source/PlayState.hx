@@ -183,6 +183,9 @@ class PlayState extends MusicBeatState
 	var phillyTrain:Sprite;
 	var trainSound:FlxSound;
 
+	var amanddica:FlxSprite;
+	var screencore:FlxSprite;
+
 	var limo:Sprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:Sprite;
