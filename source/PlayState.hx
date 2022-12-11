@@ -3315,7 +3315,7 @@ class PlayState extends MusicBeatState
 			healthAdd = -1.75;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
-			if (note.noteType == 1 || daNote.noteType == 0)
+			if (note.noteType == 1 || note.noteType == 0)
 			{
 			score = 200;
 			healthAdd = 0.01;
