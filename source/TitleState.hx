@@ -96,11 +96,11 @@ class TitleState extends MusicBeatState
 			
 	}
 
-	var logoBl:Sprite;
-	var logoTE:Sprite;
-	var gfDance:Sprite;
+	var logoBl:FlxSprite;
+	var logoTE:FlxSprite;
+	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
-	var titleText:Sprite;
+	var titleText:FlxSprite;
 
 	function startIntro()
 	{
