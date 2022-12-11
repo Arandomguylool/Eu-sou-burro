@@ -1819,7 +1819,7 @@ class PlayState extends MusicBeatState
 						oldNote = null;
 
 					var daType = songNotes[4];
-					var swagNote:Note = new Note(daStrumTime, (!randomNotes ? daNoteData : daRandomNoteData), false, oldNote, false, daType, (!gottaHitNote ? dad.noteSkin : ""));
+					var swagNote:Note = new Note(daStrumTime, (!randomNotes ? daNoteData : daRandomNoteData), false, oldNote, false, daType);
 					swagNote.sustainLength = songNotes[2];
 					swagNote.scrollFactor.set(0, 0);
 					swagNote.altNote = songNotes[3];
@@ -3337,18 +3337,18 @@ class PlayState extends MusicBeatState
 		if(noteDiff <= Conductor.safeZoneOffset * 0.23)
 		{
 			daRating = 'sick';
-			if (daNote.noteType == 2)
+			if (note.noteType == 2)
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.8, 1));
 			misses++;
 			healthAdd = -0.30;
 			}
-			if (daNote.noteType == 3)
+			if (note.noteType == 3)
 			{
 			healthAdd = -2;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
-			if (daNote.noteType == 1 || daNote.noteType == 0)
+			if (note.noteType == 1 || note.noteType == 0)
 			{
 			createNoteSplash(note);
 			score = 350;
@@ -3359,18 +3359,18 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'good';
 
-			if (daNote.noteType == 2)
+			if (note.noteType == 2)
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.7, 0.8));
 			misses++;
 			healthAdd = -0.25;
 			}
-			if (daNote.noteType == 3)
+			if (note.noteType == 3)
 			{
 			healthAdd = -1.75;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
-			if (daNote.noteType == 1 || daNote.noteType == 0)
+			if (note.noteType == 1 || daNote.noteType == 0)
 			{
 			score = 200;
 			healthAdd = 0.01;
@@ -3380,18 +3380,18 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'bad';
 
-			if (daNote.noteType == 2)
+			if (note.noteType == 2)
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.6, 0.7));
 			misses++;
 			healthAdd = -0.15;
 			}
-			if (daNote.noteType == 3)
+			if (note.noteType == 3)
 			{
 			healthAdd = -1;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
-			if (daNote.noteType == 1 || daNote.noteType == 0)
+			if (note.noteType == 1 || note.noteType == 0)
 			{
 			score = 100;
 			healthAdd = -0.0225;
@@ -3401,13 +3401,13 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'shit';
 
-			if (daNote.noteType == 2)
+			if (note.noteType == 2)
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.4, 0.6));
 			misses++;
 			healthAdd = -0.10;
 			}
-			if (daNote.noteType == 1 || daNote.noteType == 0)
+			if (note.noteType == 1 || note.noteType == 0)
 			{
 			score = 50;
 			healthAdd = -0.03;
