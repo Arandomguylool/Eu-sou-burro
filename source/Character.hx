@@ -70,6 +70,8 @@ class Character extends Sprite
 
 				addOffset('scared', -2, -17);
 
+                                healthBarColor.setRGB(165, 0, 77, 255);
+
 				playAnim('danceRight');
 
 			case 'gf-demon':
@@ -100,6 +102,8 @@ class Character extends Sprite
 
 				addOffset('scared', -2, -17);
 
+                                healthBarColor.setRGB(165, 0, 77, 255);
+
 				playAnim('danceRight');
 
 			case 'gf-m':
@@ -129,6 +133,8 @@ class Character extends Sprite
 				addOffset('hairFall', 0, -9);
 
 				addOffset('scared', -2, -17);
+
+                                healthBarColor.setRGB(165, 0, 77, 255);
 
 				playAnim('danceRight');
 
@@ -210,7 +216,9 @@ class Character extends Sprite
 					addOffset("singLEFT", 23, 17);
 					addOffset("singDOWN", 4, -74);
 					addOffset("singUCN", 474, 454);
-	
+
+				        healthBarColor.setRGB(0, 0, 0, 0);
+
 					playAnim('idle');
 
 				case 'core-madness':
@@ -231,6 +239,8 @@ class Character extends Sprite
 					addOffset("singLEFT", 23, 17);
 					addOffset("singDOWN", 4, -74);
 					addOffset("singUCN", 474, 454);
+
+				        healthBarColor.setRGB(0, 0, 0, 0);
 	
 					playAnim('idle');
 			case 'sonic': //SUPER SONIC GAMER BR
@@ -248,6 +258,8 @@ class Character extends Sprite
 				addOffset("singLEFT", 67, 10);
 				addOffset("singDOWN", 64, -101);
 
+			        healthBarColor.setRGB(0, 0, 0, 0);
+
 				playAnim('idle');
 
 				case 'demon': //SUPER SONIC GAMER BR
@@ -264,6 +276,8 @@ class Character extends Sprite
 				addOffset("singRIGHT", -184, 2);
 				addOffset("singLEFT", 170, 0);
 				addOffset("singDOWN", -40, -154);
+
+			        healthBarColor.setRGB(0, 0, 0, 0);
 
 				playAnim('idle');
 
@@ -392,6 +406,8 @@ class Character extends Sprite
 				addOffset('deathConfirm', -5, -176);
 				
 				
+			        healthBarColor.setRGB(0, 0, 0, 0);
+
 				playAnim('idle');
 
 				flipX = true;
@@ -432,6 +448,7 @@ class Character extends Sprite
 				addOffset('deathLoop', 81, 170);
 				addOffset('deathConfirm', 81, 170);
 				
+			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
 
@@ -473,6 +490,7 @@ class Character extends Sprite
 				addOffset('deathLoop', -5, -176);
 				addOffset('deathConfirm', -5, -176);
 				
+			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
 
@@ -513,6 +531,7 @@ class Character extends Sprite
 				addOffset('deathLoop', -5, -176);
 				addOffset('deathConfirm', -5, -176);
 				
+			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
 
@@ -554,6 +573,7 @@ class Character extends Sprite
 				addOffset('deathLoop', -5, -176);
 				addOffset('deathConfirm', -5, -176);
 				
+			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
 
