@@ -125,7 +125,7 @@ class Note extends Sprite
 
 				default:
 						frames = Paths.getSparrowAtlas('NOTE_assets');
-						var fuckingSussy = Paths.getSparrowAtlas('NOTE_assets_hurt');
+						var fuckingSussy = Paths.getSparrowAtlas('NOTE_assets_hurt', 'shared');
 						for(amogus in fuckingSussy.frames)
 							{
 								this.frames.pushFrame(amogus);
@@ -135,7 +135,7 @@ class Note extends Sprite
 						{
 							case 2:
 							{
-								frames = Paths.getSparrowAtlas('NOTE_assets_hurt');
+								frames = Paths.getSparrowAtlas('NOTE_assets_hurt', 'shared');
 								animation.addByPrefix('greenScroll', 'green0');
 								animation.addByPrefix('redScroll', 'red0');
 								animation.addByPrefix('blueScroll', 'blue0');
@@ -157,7 +157,7 @@ class Note extends Sprite
 							}
 							case 3:
 							{
-								frames = Paths.getSparrowAtlas('NOTE_assets_prerigo');
+								frames = Paths.getSparrowAtlas('NOTE_assets_prerigo', 'shared');
 								animation.addByPrefix('greenScroll', 'green0');
 								animation.addByPrefix('redScroll', 'red0');
 								animation.addByPrefix('blueScroll', 'blue0');
