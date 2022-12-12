@@ -1764,7 +1764,7 @@ class PlayState extends MusicBeatState
 						oldNote = null;
 
 					var daType = songNotes[3];
-					var swagNote:Note = new Note(daStrumTime, (!randomNotes ? daNoteData : daRandomNoteData), oldNote, false, daType);
+					var swagNote:Note = new Note(daStrumTime, (!randomNotes ? daNoteData : daRandomNoteData), oldNote, false, (!gottaHitNote ? dad.noteSkin : ""), daType);
 					swagNote.sustainLength = songNotes[2];
 					swagNote.scrollFactor.set(0, 0);
 					swagNote.altNote = songNotes[4];
@@ -1778,7 +1778,7 @@ class PlayState extends MusicBeatState
 					{
 						oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 
-						var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, (!randomNotes ? daNoteData : daRandomNoteData), false, oldNote, true, (!gottaHitNote ? dad.noteSkin : ""));
+						var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, (!randomNotes ? daNoteData : daRandomNoteData), oldNote, true, (!gottaHitNote ? dad.noteSkin : ""), daType);
 						sustainNote.scrollFactor.set();
 						unspawnNotes.push(sustainNote);
 						sustainNote.mustPress = gottaHitNote;
