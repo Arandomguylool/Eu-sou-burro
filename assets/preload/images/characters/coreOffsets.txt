@@ -1,0 +1,6 @@
+idle 0 0
+singUP -3 100
+singRIGHT -13 5
+singLEFT 23 17
+singDOWN 4 -74
+singUCN 474 454
