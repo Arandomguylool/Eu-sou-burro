@@ -167,7 +167,7 @@ class Character extends Sprite
 				
 				case 'core':
 					// core uwu
-					tex = Paths.getSparrowAtlas('characters/CORE', 'shared');
+					tex = Paths.getSparrowAtlas('characters/CORE');
 					frames = tex;
 					animation.addByPrefix('idle', 'CORE IDLE', 24);
 					animation.addByPrefix('singUP', 'CORE UP', 24);
@@ -184,7 +184,7 @@ class Character extends Sprite
 
 				case 'core-madness':
 					// core atacado
-					tex = Paths.getSparrowAtlas('characters/CORE_M', 'shared');
+					tex = Paths.getSparrowAtlas('characters/CORE_M');
 					frames = tex;
 					animation.addByPrefix('idle', 'CORE IDLE', 24);
 					animation.addByPrefix('singUP', 'CORE UP', 24);
@@ -199,7 +199,7 @@ class Character extends Sprite
 	
 					playAnim('idle');
 			case 'sonic': //SUPER SONIC GAMER BR
-				tex = Paths.getSparrowAtlas('characters/SUPERSONICGAMERBR', 'shared');
+				tex = Paths.getSparrowAtlas('characters/SUPERSONICGAMERBR');
 				frames = tex;
 				animation.addByPrefix('idle', 'SUPER SONIC GAMER BR IDLE', 24);
 				animation.addByPrefix('singUP', 'SUPER SONIC GAMER BR UP', 24);
@@ -213,7 +213,7 @@ class Character extends Sprite
 				playAnim('idle');
 
 				case 'demon': //SUPER SONIC GAMER BR
-				tex = Paths.getSparrowAtlas('characters/DEMON', 'shared');
+				tex = Paths.getSparrowAtlas('characters/DEMON');
 				frames = tex;
 				animation.addByPrefix('idle', 'SUPER SONIC GAMER BR IDLE', 24);
 				animation.addByPrefix('singUP', 'SUPER SONIC GAMER BR UP', 24);
@@ -315,7 +315,7 @@ class Character extends Sprite
 				flipX = true;
 
 			case 'bf':
-				var tex = Paths.getSparrowAtlas('characters/PITROZITO', 'shared');
+				var tex = Paths.getSparrowAtlas('characters/PITROZITO');
 				frames = tex;
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -342,7 +342,7 @@ class Character extends Sprite
 				flipX = true;
 
 			case 'bf-chair':
-				var tex = Paths.getSparrowAtlas('characters/PITROZITO_CHAIR', 'shared');
+				var tex = Paths.getSparrowAtlas('characters/PITROZITO_CHAIR');
 				frames = tex;
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -369,7 +369,7 @@ class Character extends Sprite
 				flipX = true;
 
 			case 'bf-madness':
-				var tex = Paths.getSparrowAtlas('characters/PITROZITO_M', 'shared');
+				var tex = Paths.getSparrowAtlas('characters/PITROZITO_M');
 				frames = tex;
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -395,7 +395,7 @@ class Character extends Sprite
 
 				flipX = true;
 			case 'bf-core':
-				var tex = Paths.getSparrowAtlas('characters/PITROZITO', 'shared');
+				var tex = Paths.getSparrowAtlas('characters/PITROZITO');
 				frames = tex;
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -422,7 +422,7 @@ class Character extends Sprite
 				flipX = true;
 		
 			case 'bf-demon':
-				var tex = Paths.getSparrowAtlas('characters/PITROZITO_DEMON', 'shared');
+				var tex = Paths.getSparrowAtlas('characters/PITROZITO_DEMON');
 				frames = tex;
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
