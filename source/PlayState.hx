@@ -3304,11 +3304,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.8, 1));
 			misses++;
-			health -= 0.30;
+			healthAdd = -0.30;
 			}
 			if (note.noteType == 3)
 			{
-			health -= 2;
+			healthAdd = -2;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3326,11 +3326,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.7, 0.8));
 			misses++;
-			health -= 0.25;
+			healthAdd = -0.25;
 			}
 			if (note.noteType == 3)
 			{
-			health -= 1.75;
+			healthAdd = -1.75;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3347,11 +3347,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.6, 0.7));
 			misses++;
-			health -= 0.15;
+			healthAdd = -0.15;
 			}
 			if (note.noteType == 3)
 			{
-			health -= 1;
+			healthAdd = 1;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3368,7 +3368,7 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.4, 0.6));
 			misses++;
-			health -= 0.10;
+			healthAdd = 0.10;
 			}
 			if (note.noteType == 1 || note.noteType == 0)
 			{
