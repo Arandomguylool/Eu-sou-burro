@@ -3090,8 +3090,19 @@ class PlayState extends MusicBeatState
 				if(missNote && daNote.mustPress)
 				{
 					if(daNote.tooLate || !daNote.wasGoodHit)
-
-					noteMiss(daNote.noteData);
+					
+			if (daNote.noteType == 2)
+			{
+			    health += 0;
+			}
+			if (daNote.noteType == 3)
+			{
+			    health += 0;
+			}
+			if (daNote.noteType == 1 || daNote.noteType == 0)
+			{
+						noteMiss(daNote.noteData);
+			}
 					daNote.active = false;
 					daNote.visible = false;
 					daNote.kill();
@@ -3293,11 +3304,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.8, 1));
 			misses++;
-			healthAdd = -0.30;
+			health -= 0.30;
 			}
 			if (note.noteType == 3)
 			{
-			healthAdd = -2;
+			health -= 2;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3315,11 +3326,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.7, 0.8));
 			misses++;
-			healthAdd = -0.25;
+			health -= 0.25;
 			}
 			if (note.noteType == 3)
 			{
-			healthAdd = -1.75;
+			health -= 1.75;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3336,11 +3347,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.6, 0.7));
 			misses++;
-			healthAdd = -0.15;
+			health -= 0.15;
 			}
 			if (note.noteType == 3)
 			{
-			healthAdd = 1;
+			health -= 1;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3357,7 +3368,7 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.4, 0.6));
 			misses++;
-			healthAdd = 0.10;
+			health -= 0.10;
 			}
 			if (note.noteType == 1 || note.noteType == 0)
 			{
@@ -3700,7 +3711,7 @@ class PlayState extends MusicBeatState
 		
 	}
 
-	function noteMiss(direction:Int = 1, daNote:Note):Void
+	function noteMiss(direction:Int = 1):Void
 	{
 		if (noFail == false)
 		{
@@ -3712,19 +3723,8 @@ class PlayState extends MusicBeatState
 			var coolText:FlxText = new FlxText(0, 0, 0, " ", 32);
 			coolText.screenCenter();
 			coolText.x = FlxG.width * 0.55;
-			if (daNote.noteType == 2)
-			{
-			    health += 0;
-			}
-			if (daNote.noteType == 3)
-			{
-			    health += 0;
-			}
-			if (daNote.noteType == 1 || daNote.noteType == 0)
-			{
 			misses++;
 			health -= 0.045;
-                        }
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
