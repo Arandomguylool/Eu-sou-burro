@@ -2484,6 +2484,24 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
+		//Copiei kekekek
+		if (dad.curCharacter == "demon"){
+			dad.y += Math.sin(floatshit);
+			dad.x += Math.sin(exfloatshit);
+		}
+
+		//camera girando girando girando pro lado
+		if (curSong.toLowerCase() == 'hardcore')
+		{
+		camHUD.angle = Math.sin(exfloatshit);
+		}
+		if (curSong.toLowerCase() == 'from-hell')
+		{
+		camHUD.angle = Math.sin(exfloatshit/2);
+		}
+
+		FlxG.camera.angle = Math.sin(floatshit);
+
 		iconP1.setGraphicSize(Std.int(150 + 0.85 * (iconP1.width - 150)));
                 iconP2.setGraphicSize(Std.int(150 + 0.85 * (iconP2.width - 150)));
 
@@ -3286,11 +3304,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.8, 1));
 			misses++;
-			healthAdd = -0.30;
+			health -= 0.30;
 			}
 			if (note.noteType == 3)
 			{
-			healthAdd = -2;
+			health -= 2;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3308,11 +3326,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.7, 0.8));
 			misses++;
-			healthAdd = -0.25;
+			health -= 0.25;
 			}
 			if (note.noteType == 3)
 			{
-			healthAdd = -1.75;
+			health -= 1.75;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3329,11 +3347,11 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.6, 0.7));
 			misses++;
-			healthAdd = -0.15;
+			health -= 0.15;
 			}
 			if (note.noteType == 3)
 			{
-			healthAdd = -1;
+			health -= 1;
 			FlxG.sound.play(Paths.soundRandom('AAA', 1, 2), FlxG.random.float(2.0, 1.8));
 			}
 			if (note.noteType == 1 || note.noteType == 0)
@@ -3350,7 +3368,7 @@ class PlayState extends MusicBeatState
 			{
 			FlxG.sound.play(Paths.soundRandom('badnoise', 1, 3), FlxG.random.float(0.4, 0.6));
 			misses++;
-			healthAdd = -0.10;
+			health -= 0.10;
 			}
 			if (note.noteType == 1 || note.noteType == 0)
 			{
