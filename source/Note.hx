@@ -65,13 +65,14 @@ class Note extends Sprite
 	public static var RED_NOTE:Int = 3;
 
 
-	public function new(strumTime:Float, noteData:Int, ?eventNote:Bool, ?prevNote:Note, ?sustainNote:Bool = false, ?noteSkin:String = "")
+	public function new(strumTime:Float, noteData:Int, ?eventNote:Bool, ?prevNote:Note, ?sustainNote:Bool = false, ?noteSkin:String = "", ?noteType:Int = 0)
 	{
 		super();
 
 		if (prevNote == null)
 			prevNote = this;
 
+		this.noteType = noteType;
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
 		this.eventNote = eventNote;
