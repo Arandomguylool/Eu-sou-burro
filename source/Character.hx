@@ -57,18 +57,7 @@ class Character extends Sprite
 				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
-				addOffset('cheer');
-				addOffset('danceLeft', 0, -9);
-				addOffset('danceRight', 0, -9);
-
-				addOffset("singUP", 0, 4);
-				addOffset("singRIGHT", 0, -20);
-				addOffset("singLEFT", 0, -19);
-				addOffset("singDOWN", 0, -20);
-				addOffset('hairBlow', 45, -8);
-				addOffset('hairFall', 0, -9);
-
-				addOffset('scared', -2, -17);
+				loadOffsetFile(curCharacter);
 
                                 healthBarColor.setRGB(165, 0, 77, 255);
 
@@ -89,18 +78,7 @@ class Character extends Sprite
 				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
-				addOffset('cheer');
-				addOffset('danceLeft', 0, -9);
-				addOffset('danceRight', 0, -9);
-
-				addOffset("singUP", 0, 4);
-				addOffset("singRIGHT", 0, -20);
-				addOffset("singLEFT", 0, -19);
-				addOffset("singDOWN", 0, -20);
-				addOffset('hairBlow', 45, -8);
-				addOffset('hairFall', 0, -9);
-
-				addOffset('scared', -2, -17);
+				loadOffsetFile(curCharacter);
 
                                 healthBarColor.setRGB(165, 0, 77, 255);
 
@@ -121,18 +99,7 @@ class Character extends Sprite
 				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
-				addOffset('cheer');
-				addOffset('danceLeft', 0, -9);
-				addOffset('danceRight', 0, -9);
-
-				addOffset("singUP", 0, 4);
-				addOffset("singRIGHT", 0, -20);
-				addOffset("singLEFT", 0, -19);
-				addOffset("singDOWN", 0, -20);
-				addOffset('hairBlow', 45, -8);
-				addOffset('hairFall', 0, -9);
-
-				addOffset('scared', -2, -17);
+				loadOffsetFile(curCharacter);
 
                                 healthBarColor.setRGB(165, 0, 77, 255);
 
@@ -209,14 +176,8 @@ class Character extends Sprite
 					animation.addByPrefix('singLEFT', 'CORE LEFT', 24);
 
 					animation.addByPrefix('singUCN', 'CORE UCN', 24);
-	
-					addOffset('idle');
-					addOffset("singUP", -3, 100);
-					addOffset("singRIGHT", -13, 5);
-					addOffset("singLEFT", 23, 17);
-					addOffset("singDOWN", 4, -74);
-					addOffset("singUCN", 474, 454);
 
+				        loadOffsetFile(curCharacter);
 				        healthBarColor.setRGB(0, 0, 0, 0);
 
 					playAnim('idle');
@@ -232,14 +193,8 @@ class Character extends Sprite
 					animation.addByPrefix('singLEFT', 'CORE LEFT', 24);
 
 					animation.addByPrefix('singUCN', 'CORE UCN', 24);
-	
-					addOffset('idle');
-					addOffset("singUP", -3, 100);
-					addOffset("singRIGHT", -13, 5);
-					addOffset("singLEFT", 23, 17);
-					addOffset("singDOWN", 4, -74);
-					addOffset("singUCN", 474, 454);
 
+				        loadOffsetFile(curCharacter);
 				        healthBarColor.setRGB(0, 0, 0, 0);
 	
 					playAnim('idle');
@@ -252,12 +207,7 @@ class Character extends Sprite
 				animation.addByPrefix('singDOWN', 'SUPER SONIC GAMER BR DOWN', 24);
 				animation.addByPrefix('singLEFT', 'SUPER SONIC GAMER BR LEFT', 24);
 
-				addOffset('idle');
-				addOffset("singUP", -6, 250);
-				addOffset("singRIGHT", -16, -1);
-				addOffset("singLEFT", 67, 10);
-				addOffset("singDOWN", 64, -101);
-
+				loadOffsetFile(curCharacter);
 			        healthBarColor.setRGB(0, 0, 0, 0);
 
 				playAnim('idle');
@@ -271,12 +221,7 @@ class Character extends Sprite
 				animation.addByPrefix('singDOWN', 'SUPER SONIC GAMER BR DOWN', 24);
 				animation.addByPrefix('singLEFT', 'SUPER SONIC GAMER BR LEFT', 24);
 
-				addOffset("idle", -12, -10);
-				addOffset("singUP", 28, 133);
-				addOffset("singRIGHT", -184, 2);
-				addOffset("singLEFT", 170, 0);
-				addOffset("singDOWN", -40, -154);
-
+				loadOffsetFile(curCharacter);
 			        healthBarColor.setRGB(0, 0, 0, 0);
 
 				playAnim('idle');
@@ -389,23 +334,7 @@ class Character extends Sprite
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
 				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
 
-
-				addOffset('idle', 81,174);
-				addOffset("singUP", 65, 199);
-				addOffset("singRIGHT", 16, 105);
-				addOffset("singLEFT", 94, 134);
-				addOffset("singDOWN", -36, -100);
-				
-				addOffset("singUPmiss", 65, 199);
-				addOffset("singRIGHTmiss", 16, 105);
-				addOffset("singLEFTmiss", 94, 134);
-				addOffset("singDOWNmiss", -36, -100);
-				
-				addOffset('firstDeath', 78, 171);
-				addOffset('deathLoop', -5, -176);
-				addOffset('deathConfirm', -5, -176);
-				
-				
+				loadOffsetFile(curCharacter);
 			        healthBarColor.setRGB(0, 0, 0, 0);
 
 				playAnim('idle');
@@ -432,22 +361,7 @@ class Character extends Sprite
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
 				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
 
-
-				addOffset('idle', 81,174);
-				addOffset("singUP", 14, 223);
-				addOffset("singRIGHT", 13, 175);
-				addOffset("singLEFT", 64, 160);
-				addOffset("singDOWN", 75, 93);
-				
-				addOffset("singUPmiss", 17, 223);
-				addOffset("singRIGHTmiss", 14, 175);
-				addOffset("singLEFTmiss", 64, 160);
-				addOffset("singDOWNmiss", 73, 97);
-				
-				addOffset('firstDeath', 81, 171);
-				addOffset('deathLoop', 81, 170);
-				addOffset('deathConfirm', 81, 170);
-				
+				loadOffsetFile(curCharacter);
 			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
@@ -474,22 +388,7 @@ class Character extends Sprite
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
 				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
 
-
-				addOffset('idle', 81,174);
-				addOffset("singUP", 65, 199);
-				addOffset("singRIGHT", 16, 105);
-				addOffset("singLEFT", 94, 134);
-				addOffset("singDOWN", -36, -100);
-				
-				addOffset("singUPmiss", 65, 199);
-				addOffset("singRIGHTmiss", 16, 105);
-				addOffset("singLEFTmiss", 94, 134);
-				addOffset("singDOWNmiss", -36, -100);
-				
-				addOffset('firstDeath', 78, 171);
-				addOffset('deathLoop', -5, -176);
-				addOffset('deathConfirm', -5, -176);
-				
+				loadOffsetFile(curCharacter);
 			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
@@ -515,22 +414,7 @@ class Character extends Sprite
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
 				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
 
-
-				addOffset('idle', 81,174);
-				addOffset("singUP", 65, 199);
-				addOffset("singRIGHT", 16, 105);
-				addOffset("singLEFT", 94, 134);
-				addOffset("singDOWN", -36, -100);
-				
-				addOffset("singUPmiss", 65, 199);
-				addOffset("singRIGHTmiss", 16, 105);
-				addOffset("singLEFTmiss", 94, 134);
-				addOffset("singDOWNmiss", -36, -100);
-				
-				addOffset('firstDeath', 78, 171);
-				addOffset('deathLoop', -5, -176);
-				addOffset('deathConfirm', -5, -176);
-				
+				loadOffsetFile(curCharacter);
 			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
@@ -557,22 +441,7 @@ class Character extends Sprite
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
 				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
 
-
-				addOffset('idle', 81,174);
-				addOffset("singUP", 65, 199);
-				addOffset("singRIGHT", 16, 105);
-				addOffset("singLEFT", 94, 134);
-				addOffset("singDOWN", -36, -100);
-				
-				addOffset("singUPmiss", 65, 199);
-				addOffset("singRIGHTmiss", 16, 105);
-				addOffset("singLEFTmiss", 94, 134);
-				addOffset("singDOWNmiss", -36, -100);
-				
-				addOffset('firstDeath', 78, 171);
-				addOffset('deathLoop', -5, -176);
-				addOffset('deathConfirm', -5, -176);
-				
+				loadOffsetFile(curCharacter);
 			        healthBarColor.setRGB(0, 0, 0, 0);
 				
 				playAnim('idle');
