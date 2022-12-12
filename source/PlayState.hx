@@ -3700,7 +3700,7 @@ class PlayState extends MusicBeatState
 		
 	}
 
-	function noteMiss(direction:Int = 1):Void
+	function noteMiss(daNote:Note, direction:Int = 1):Void
 	{
 		if (noFail == false)
 		{
