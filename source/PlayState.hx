@@ -3813,13 +3813,13 @@ class PlayState extends MusicBeatState
 		
 		
 		if (leftP)
-			noteMiss(0);
+			noteMiss(0, daNote);
 		if (downP)
-			noteMiss(1);
+			noteMiss(1, daNote);
 		if (upP)
-			noteMiss(2);
+			noteMiss(2, daNote);
 		if (rightP)
-			noteMiss(3);
+			noteMiss(3, daNote);
 		
 	}
 
