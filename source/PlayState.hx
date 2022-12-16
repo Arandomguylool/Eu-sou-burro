@@ -3102,7 +3102,7 @@ class PlayState extends MusicBeatState
 
 		if (!inCutscene)
 		{
-			keyShit(daNote);
+			keyShit();
 		}
 		
 
@@ -3520,7 +3520,7 @@ class PlayState extends MusicBeatState
 
 	
 
-	private function keyShit(daNote:Note):Void
+	private function keyShit():Void
 	{
 		var control = PlayerSettings.player1.controls;
 
@@ -3586,7 +3586,7 @@ class PlayState extends MusicBeatState
 			}
 			else if(!FlxG.save.data.skillIssue)
 			{
-				badNoteCheck(daNote);
+				//badNoteCheck();
 				clicks.push(time);
 			}
 		}
@@ -3801,7 +3801,7 @@ class PlayState extends MusicBeatState
 		if(totalAccuracy < 0)
 			totalAccuracy = 0;
 	}
-	function badNoteCheck(daNote:Note)
+	/*function badNoteCheck(daNote:Note)
 	{
 		// just double pasting this shit cuz fuk u
 		// REDO THIS SYSTEM!
@@ -3813,15 +3813,15 @@ class PlayState extends MusicBeatState
 		
 		
 		if (leftP)
-			noteMiss(0, daNote);
+			noteMiss(0);
 		if (downP)
-			noteMiss(1, daNote);
+			noteMiss(1);
 		if (upP)
-			noteMiss(2, daNote);
+			noteMiss(2);
 		if (rightP)
-			noteMiss(3, daNote);
+			noteMiss(3);
 		
-	}
+	}*/
 
 	function goodNoteHit(note:Note):Void
 	{
