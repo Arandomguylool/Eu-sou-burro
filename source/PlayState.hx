@@ -3703,14 +3703,6 @@ class PlayState extends MusicBeatState
 	{
 		if (noFail == false)
 		{
-			vocals1.volume = 0;
-			hits.push(-Conductor.safeZoneOffset);
-			calculateAccuracy();
-			hitAccuracy.push(totalAccuracy);
-			var rating:Sprite = new Sprite();
-			var coolText:FlxText = new FlxText(0, 0, 0, " ", 32);
-			coolText.screenCenter();
-			coolText.x = FlxG.width * 0.55;
 			if (daNote.noteType == 2)
 			{
 			    health += 0;
@@ -3721,6 +3713,14 @@ class PlayState extends MusicBeatState
 			}
 			if (daNote.noteType == 1 || daNote.noteType == 0)
 			{
+			vocals1.volume = 0;
+			hits.push(-Conductor.safeZoneOffset);
+			calculateAccuracy();
+			hitAccuracy.push(totalAccuracy);
+			var rating:Sprite = new Sprite();
+			var coolText:FlxText = new FlxText(0, 0, 0, " ", 32);
+			coolText.screenCenter();
+			coolText.x = FlxG.width * 0.55;
 			misses++;
 			health -= 0.045;
 			if (combo > 5 && gf.animOffsets.exists('sad'))
