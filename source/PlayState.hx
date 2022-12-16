@@ -3737,6 +3737,8 @@ class PlayState extends MusicBeatState
                         }
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
+			if (daNote.noteType != 2 || daNote.noteType != 3)
+			{
 			var pixelShitPart1:String = "";
 			var pixelShitPart2:String = '';
 
@@ -3788,6 +3790,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 	}
+}
 	function calculateAccuracy()
 	{
 		totalAccuracy = 0;
