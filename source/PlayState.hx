@@ -3723,7 +3723,6 @@ class PlayState extends MusicBeatState
 			{
 			misses++;
 			health -= 0.045;
-                        }
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
@@ -3731,6 +3730,7 @@ class PlayState extends MusicBeatState
 			combo = 0;
 
 			songScore -= 15;
+                        }
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.15, 0.25));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
