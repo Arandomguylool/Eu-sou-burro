@@ -3704,6 +3704,7 @@ class PlayState extends MusicBeatState
 		if (noFail == false)
 		{
 			var rating:Sprite = new Sprite();
+			var coolText:FlxText = new FlxText(0, 0, 0, " ", 32);
 
 			if (daNote.noteType == 2)
 			{
