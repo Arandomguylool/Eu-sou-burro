@@ -322,8 +322,8 @@ class FreeplayState extends MusicBeatState
 			maxDiff = 4;
 
 		if (curDifficulty < 1)
-			curDifficulty = maxDiff - 2;
-		if (curDifficulty > maxDiff - 2)
+			curDifficulty = 2;
+		if (curDifficulty > 2)
 			curDifficulty = 1;
 
 		#if !switch
