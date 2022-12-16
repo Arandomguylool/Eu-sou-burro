@@ -3734,11 +3734,8 @@ class PlayState extends MusicBeatState
 			songScore -= 15;
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.15, 0.25));
-                        }
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
-			if (daNote.noteType != 2 || daNote.noteType != 3)
-			{
 			var pixelShitPart1:String = "";
 			var pixelShitPart2:String = '';
 
