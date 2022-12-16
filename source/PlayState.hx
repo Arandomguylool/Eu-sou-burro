@@ -3102,7 +3102,7 @@ class PlayState extends MusicBeatState
 
 		if (!inCutscene)
 		{
-			keyShit();
+			keyShit(daNote);
 		}
 		
 
@@ -3520,7 +3520,7 @@ class PlayState extends MusicBeatState
 
 	
 
-	private function keyShit():Void
+	private function keyShit(daNote:Note):Void
 	{
 		var control = PlayerSettings.player1.controls;
 
