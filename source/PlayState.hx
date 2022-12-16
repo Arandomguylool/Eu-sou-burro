@@ -3730,9 +3730,9 @@ class PlayState extends MusicBeatState
 			combo = 0;
 
 			songScore -= 15;
-                        }
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.15, 0.25));
+                        }
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
 			var pixelShitPart1:String = "";
