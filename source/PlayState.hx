@@ -84,15 +84,15 @@ class PlayState extends MusicBeatState
 	var judgementBar:Sprite;
 	private var pointAtGF:Bool = false;
 
-	private var dad:Character;
-	private var gf:Character;
-	private var boyfriend:Boyfriend;
+	public var dad:Character;
+	public var gf:Character;
+	public var boyfriend:Boyfriend;
 	private var shadersLoaded:Bool = false;
 
 	private var notes:FlxTypedGroup<Note>;
 	private var unspawnNotes:Array<Note> = [];
 
-	private var strumLine:Sprite;
+	public var strumLine:Sprite;
 	private var curSection:Int = 0;
 
 	private var camFollow:FlxObject;
@@ -145,7 +145,7 @@ class PlayState extends MusicBeatState
 	private var floatshit:Float = 0;
 	private var exfloatshit:Float = 0;
 	private var rotatoCam:Float = 0;
-	private var health:Float = 1;
+	public var health:Float = 1;
 	var filters:Array<BitmapFilter> = [];
 	var camfilters:Array<BitmapFilter> = [];
 	private var combo:Int = 0;
@@ -168,9 +168,9 @@ class PlayState extends MusicBeatState
 
 	public var hitAccuracy:Array<Float> = [];
 
-	private var iconP1:HealthIcon;
-	private var iconP2:HealthIcon;
-	private var camHUD:FlxCamera;
+	public var iconP1:HealthIcon;
+	public var iconP2:HealthIcon;
+	public var camHUD:FlxCamera;
 	private var camGame:FlxCamera;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
@@ -280,6 +280,8 @@ class PlayState extends MusicBeatState
 		}
 		kps = clicks.length;
 	}
+	
+	private var executeModchart = false;
 
 	override public function create()
 	{
@@ -358,6 +360,10 @@ class PlayState extends MusicBeatState
 			case 'hardcore':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('hardcore/diag'));
 		}
+		
+		executeModchart = OpenFlAssets.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.lua");
+
+		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(songLowercase + "/modchart"));
 
 		#if desktop
 		// Making difficulty text for Discord Rich Presence.
@@ -1473,6 +1479,12 @@ class PlayState extends MusicBeatState
 
 	var startTimer:FlxTimer;
 	var perfectMode:Bool = false;
+	
+	var luaWiggles:Array<WiggleEffect> = [];
+
+	#if cpp
+	public static var luaModchart:ModchartState = null;
+	#end
 
 	function startCountdown():Void
 	{
@@ -1485,6 +1497,13 @@ class PlayState extends MusicBeatState
 		generateStaticArrowsDAD();
 		generateStaticArrowsBF();
 
+		#if cpp
+		if (executeModchart)
+		{
+			luaModchart = ModchartState.createModchartState();
+			luaModchart.executeState('start',[PlayState.SONG.song]);
+		}
+		#end
 		
 		talking = false;
 		startedCountdown = true;
@@ -2278,6 +2297,62 @@ class PlayState extends MusicBeatState
 		#if !debug
 		perfectMode = false;
 		#end
+		
+		#if cpp
+		if (executeModchart && luaModchart != null && songStarted)
+		{
+			luaModchart.setVar('songPos',Conductor.songPosition);
+			luaModchart.setVar('hudZoom', camHUD.zoom);
+			luaModchart.setVar('cameraZoom',FlxG.camera.zoom);
+			luaModchart.executeState('update', [elapsed]);
+
+			for (i in luaWiggles)
+			{
+				trace('wiggle le gaming');
+				i.update(elapsed);
+			}
+
+			/*for (i in 0...strumLineNotes.length) {
+				var member = strumLineNotes.members[i];
+				member.x = luaModchart.getVar("strum" + i + "X", "float");
+				member.y = luaModchart.getVar("strum" + i + "Y", "float");
+				member.angle = luaModchart.getVar("strum" + i + "Angle", "float");
+			}*/
+
+			FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
+			camHUD.angle = luaModchart.getVar('camHudAngle','float');
+
+			if (luaModchart.getVar("showOnlyStrums",'bool'))
+			{
+				healthBarBG.visible = false;
+				kadeEngineWatermark.visible = false;
+				healthBar.visible = false;
+				iconP1.visible = false;
+				iconP2.visible = false;
+				scoreTxt.visible = false;
+			}
+			else
+			{
+				healthBarBG.visible = true;
+				kadeEngineWatermark.visible = true;
+				healthBar.visible = true;
+				iconP1.visible = true;
+				iconP2.visible = true;
+				scoreTxt.visible = true;
+			}
+
+			var p1 = luaModchart.getVar("strumLine1Visible",'bool');
+			var p2 = luaModchart.getVar("strumLine2Visible",'bool');
+
+			for (i in 0...4)
+			{
+				strumLineNotes.members[i].visible = p1;
+				if (i <= playerStrums.length)
+					playerStrums.members[i].visible = p2;
+			}
+		}
+
+		#end
 
 		time += elapsed;
 		CalculateKeysPerSecond();
@@ -2461,6 +2536,13 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.SEVEN)
 		{
 			FlxG.switchState(new ChartingState());
+			#if cpp
+			if (luaModchart != null)
+			{
+				luaModchart.die();
+				luaModchart = null;
+			}
+			#end
 
 			#if desktop
 			DiscordClient.changePresence("Chart Editor", null, null, true);
@@ -2469,6 +2551,13 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.EIGHT)
 		{
 			FlxG.switchState(new EventsEditorState());
+			#if cpp
+			if (luaModchart != null)
+			{
+				luaModchart.die();
+				luaModchart = null;
+			}
+			#end
 
 			#if desktop
 			DiscordClient.changePresence("Events Editor", null, null, true);
@@ -2600,11 +2689,28 @@ class PlayState extends MusicBeatState
 				// trace(PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
 			}
 
+			#if cpp
+			if (luaModchart != null)
+				luaModchart.setVar("mustHit",PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
+			#end
+			
 			if (/*camFollow.x != dad.getMidpoint().x + 150 && */!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && (!pointAtGF && !camPointEventEnabled))
 			{
 				var camFollowX:Float = dad.getMidpoint().x;
 				var camFollowY:Float = dad.getMidpoint().y;
+				
+				#if cpp
+				if (luaModchart != null)
+				{
+					camFollowX = luaModchart.getVar("followXOffset", "float");
+					camFollowY = luaModchart.getVar("followYOffset", "float");
+				}
+				#end
 
+				#if cpp
+				if (luaModchart != null)
+					luaModchart.executeState('playerTwoTurn', []);
+				#end
 				switch (dad.curCharacter)
 				{
 					case 'mom':
@@ -2659,6 +2765,18 @@ class PlayState extends MusicBeatState
 				var camFollowX:Float = boyfriend.getMidpoint().x;
 				var camFollowY:Float = boyfriend.getMidpoint().y;
 				
+				#if cpp
+				if (luaModchart != null)
+				{
+					camFollowX = luaModchart.getVar("followXOffset", "float");
+					camFollowY = luaModchart.getVar("followYOffset", "float");
+				}
+				#end
+				
+				#if cpp
+				if (luaModchart != null)
+					luaModchart.executeState('playerOneTurn', []);
+				#end
 
 				switch (curStage)
 				{
@@ -3058,6 +3176,11 @@ class PlayState extends MusicBeatState
 									spr.centerOffsets();
 								
 							});
+							
+						#if cpp
+						if (luaModchart != null)
+							luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition]);
+						#end
 
 					dad.holdTimer = 0;
 					if (SONG.needsVoices)
@@ -3117,6 +3240,14 @@ class PlayState extends MusicBeatState
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		FlxG.sound.music.onComplete = null;
+		
+		#if cpp
+		if (luaModchart != null)
+		{
+			luaModchart.die();
+			luaModchart = null;
+		}
+		#end
 
 		vocals1.volume = 0;
 		vocals2.volume = 0;
@@ -3152,6 +3283,14 @@ class PlayState extends MusicBeatState
 				transOut = FlxTransitionableState.defaultTransOut;
 
 				FlxG.switchState(new StoryMenuState());
+				
+					#if cpp
+					if (luaModchart != null)
+					{
+						luaModchart.die();
+						luaModchart = null;
+					}
+					#end
 
 				// if ()
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
@@ -3538,6 +3677,15 @@ class PlayState extends MusicBeatState
 			control.UP_R,
 			control.RIGHT_R
 		];
+		
+				#if cpp
+				if (luaModchart != null){
+				if (controls.LEFT_P){luaModchart.executeState('keyPressed',["left"]);};
+				if (controls.DOWN_P){luaModchart.executeState('keyPressed',["down"]);};
+				if (controls.UP_P){luaModchart.executeState('keyPressed',["up"]);};
+				if (controls.RIGHT_P){luaModchart.executeState('keyPressed',["right"]);};
+				};
+				#end
 
 		if (FlxG.save.data.botAutoPlay)
 		{
@@ -3784,6 +3932,11 @@ class PlayState extends MusicBeatState
 					boyfriend.playAnim('singUPmiss', true);
 				case 3:
 					boyfriend.playAnim('singRIGHTmiss', true);
+					
+			#if cpp
+			if (luaModchart != null)
+				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
+			#end
 			}
 		}
 	}
@@ -3866,6 +4019,11 @@ class PlayState extends MusicBeatState
 				case 3:
 					boyfriend.playAnim('singRIGHT' + altAnim, true);
 			}
+			
+					#if cpp
+					if (luaModchart != null)
+						luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition]);
+					#end
 
 			playerStrums.forEach(function(spr:Sprite)
 			{
@@ -4132,6 +4290,14 @@ class PlayState extends MusicBeatState
 		{
 			resyncVocals();
 		}
+		
+		#if cpp
+		if (executeModchart && luaModchart != null)
+		{
+			luaModchart.setVar('curStep',curStep);
+			luaModchart.executeState('stepHit',[curStep]);
+		}
+		#end
 
 		//for events
 		switch (SONG.song.toLowerCase()) 
@@ -4352,6 +4518,14 @@ class PlayState extends MusicBeatState
 		{
 			notes.sort(FlxSort.byY, FlxSort.DESCENDING);
 		}
+		
+		#if cpp
+		if (executeModchart && luaModchart != null)
+		{
+			luaModchart.setVar('curBeat',curBeat);
+			luaModchart.executeState('beatHit',[curBeat]);
+		}
+		#end
 
 		switch(SONG.song.toLowerCase())
 		{
