@@ -3090,19 +3090,7 @@ class PlayState extends MusicBeatState
 				if(missNote && daNote.mustPress)
 				{
 					if(daNote.tooLate || !daNote.wasGoodHit)
-					
-			if (daNote.noteType == 2)
-			{
-			    health += 0;
-			}
-			if (daNote.noteType == 3)
-			{
-			    health += 0;
-			}
-			if (daNote.noteType == 1 || daNote.noteType == 0)
-			{
-						noteMiss(daNote.noteData);
-			}
+					noteMiss(daNote.noteData, daNote);
 					daNote.active = false;
 					daNote.visible = false;
 					daNote.kill();
@@ -3598,7 +3586,7 @@ class PlayState extends MusicBeatState
 			}
 			else if(!FlxG.save.data.skillIssue)
 			{
-				badNoteCheck();
+				//badNoteCheck();
 				clicks.push(time);
 			}
 		}
@@ -3711,7 +3699,7 @@ class PlayState extends MusicBeatState
 		
 	}
 
-	function noteMiss(direction:Int = 1):Void
+	function noteMiss(direction:Int = 1, daNote:Note):Void
 	{
 		if (noFail == false)
 		{
@@ -3723,8 +3711,19 @@ class PlayState extends MusicBeatState
 			var coolText:FlxText = new FlxText(0, 0, 0, " ", 32);
 			coolText.screenCenter();
 			coolText.x = FlxG.width * 0.55;
+			if (daNote.noteType == 2)
+			{
+			    health += 0;
+			}
+			if (daNote.noteType == 3)
+			{
+			    health += 0;
+			}
+			if (daNote.noteType == 1 || daNote.noteType == 0)
+			{
 			misses++;
 			health -= 0.045;
+                        }
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
@@ -3800,7 +3799,7 @@ class PlayState extends MusicBeatState
 		if(totalAccuracy < 0)
 			totalAccuracy = 0;
 	}
-	function badNoteCheck()
+	/*function badNoteCheck()
 	{
 		// just double pasting this shit cuz fuk u
 		// REDO THIS SYSTEM!
@@ -3820,7 +3819,7 @@ class PlayState extends MusicBeatState
 		if (rightP)
 			noteMiss(3);
 		
-	}
+	}*/
 
 	function goodNoteHit(note:Note):Void
 	{
