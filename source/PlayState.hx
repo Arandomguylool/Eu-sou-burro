@@ -3586,7 +3586,7 @@ class PlayState extends MusicBeatState
 			}
 			else if(!FlxG.save.data.skillIssue)
 			{
-				badNoteCheck();
+				badNoteCheck(daNote);
 				clicks.push(time);
 			}
 		}
@@ -3801,7 +3801,7 @@ class PlayState extends MusicBeatState
 		if(totalAccuracy < 0)
 			totalAccuracy = 0;
 	}
-	function badNoteCheck()
+	function badNoteCheck(daNote:Note)
 	{
 		// just double pasting this shit cuz fuk u
 		// REDO THIS SYSTEM!
