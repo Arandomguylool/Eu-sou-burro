@@ -3703,6 +3703,8 @@ class PlayState extends MusicBeatState
 	{
 		if (noFail == false)
 		{
+			var rating:Sprite = new Sprite();
+
 			if (daNote.noteType == 2)
 			{
 			    health += 0;
@@ -3717,7 +3719,6 @@ class PlayState extends MusicBeatState
 			hits.push(-Conductor.safeZoneOffset);
 			calculateAccuracy();
 			hitAccuracy.push(totalAccuracy);
-			var rating:Sprite = new Sprite();
 			var coolText:FlxText = new FlxText(0, 0, 0, " ", 32);
 			coolText.screenCenter();
 			coolText.x = FlxG.width * 0.55;
