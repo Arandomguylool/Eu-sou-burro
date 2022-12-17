@@ -3217,9 +3217,9 @@ class PlayState extends MusicBeatState
 				}*/
 				var missNote:Bool = daNote.y < -daNote.height;
 				if(FlxG.save.data.downscroll) missNote = daNote.y > FlxG.height;
-				if(missNote && daNote.mustPress)
+				if(missNote && daNote.mustPress && !daNote.modifiedByLua)
 				{
-					if(daNote.tooLate || !daNote.wasGoodHit)
+					if(daNote.tooLate || !daNote.wasGoodHit && !daNote.modifiedByLua)
 					noteMiss(daNote.noteData, daNote);
 					daNote.active = false;
 					daNote.visible = false;
