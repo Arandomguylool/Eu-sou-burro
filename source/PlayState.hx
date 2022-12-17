@@ -104,7 +104,7 @@ class PlayState extends MusicBeatState
 	private static var prevCamFollow:FlxObject;
 
 	public static var strumLineNotes:FlxTypedGroup<Sprite>;
-	private var playerStrums:FlxTypedGroup<Sprite>;
+	public static var playerStrums:FlxTypedGroup<Sprite>;
 	private var dadStrums:FlxTypedGroup<Sprite>;
 
 
@@ -2330,7 +2330,6 @@ class PlayState extends MusicBeatState
 			if (luaModchart.getVar("showOnlyStrums",'bool'))
 			{
 				healthBarBG.visible = false;
-				kadeEngineWatermark.visible = false;
 				healthBar.visible = false;
 				iconP1.visible = false;
 				iconP2.visible = false;
@@ -2339,7 +2338,6 @@ class PlayState extends MusicBeatState
 			else
 			{
 				healthBarBG.visible = true;
-				kadeEngineWatermark.visible = true;
 				healthBar.visible = true;
 				iconP1.visible = true;
 				iconP2.visible = true;
