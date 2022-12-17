@@ -2964,6 +2964,9 @@ class PlayState extends MusicBeatState
 				//daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
 				
 				var c = strumLineNotes.members[daNote.noteData + (daNote.mustPress ? 4 : 0)].y + Note.swagWidth / 2;
+
+				if (!daNote.modifiedByLua)
+				{
 				if(FlxG.save.data.downscroll)
 				{
 					daNote.y = strumLineNotes.members[daNote.noteData + (daNote.mustPress ? 4 : 0)].y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(curSpeed, 2);
@@ -2997,6 +3000,7 @@ class PlayState extends MusicBeatState
 				                }
 				        }
 				}
+                        }
 				/*if (daNote.isSustainNote
 					&& daNote.y + daNote.offset.y <= strumLine.y + Note.swagWidth / 2
 					&& (!daNote.mustPress || (daNote.wasGoodHit || (daNote.prevNote.wasGoodHit && !daNote.canBeHit))))
