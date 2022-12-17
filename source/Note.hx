@@ -51,6 +51,7 @@ class Note extends Sprite
 	public var prevNote:Note;
 	public var eventNote:Bool = false;
 
+	public var modifiedByLua:Bool = false;
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
 	public var altNote:Bool = false;
