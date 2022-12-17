@@ -84,12 +84,12 @@ class PlayState extends MusicBeatState
 	var judgementBar:Sprite;
 	private var pointAtGF:Bool = false;
 
-	public var dad:Character;
-	public var gf:Character;
-	public var boyfriend:Boyfriend;
+	public static var dad:Character;
+	public static var gf:Character;
+	public static var boyfriend:Boyfriend;
 	private var shadersLoaded:Bool = false;
 
-	private var notes:FlxTypedGroup<Note>;
+	public var notes:FlxTypedGroup<Note>;
 	private var unspawnNotes:Array<Note> = [];
 
 	public var strumLine:Sprite;
@@ -103,7 +103,7 @@ class PlayState extends MusicBeatState
 
 	private static var prevCamFollow:FlxObject;
 
-	private var strumLineNotes:FlxTypedGroup<Sprite>;
+	public static var strumLineNotes:FlxTypedGroup<Sprite>;
 	private var playerStrums:FlxTypedGroup<Sprite>;
 	private var dadStrums:FlxTypedGroup<Sprite>;
 
@@ -283,6 +283,11 @@ class PlayState extends MusicBeatState
 	
 	private var executeModchart = false;
 
+	// API stuff
+	
+	public function addObject(object:FlxBasic) { add(object); }
+	public function removeObject(object:FlxBasic) { remove(object); }
+	
 	override public function create()
 	{
 
@@ -362,8 +367,6 @@ class PlayState extends MusicBeatState
 		}
 		
 		executeModchart = OpenFlAssets.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.lua");
-
-		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
 
 		#if desktop
 		// Making difficulty text for Discord Rich Presence.
@@ -1690,10 +1693,12 @@ class PlayState extends MusicBeatState
 	var previousFrameTime:Int = 0;
 	var lastReportedPlayheadPosition:Int = 0;
 	var songTime:Float = 0;
+	var songStarted = false;
 
 	function startSong():Void
 	{
 		startingSong = false;
+		songStarted = true;
 
 		previousFrameTime = FlxG.game.ticks;
 		lastReportedPlayheadPosition = 0;
