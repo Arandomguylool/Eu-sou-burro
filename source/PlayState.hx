@@ -363,7 +363,7 @@ class PlayState extends MusicBeatState
 		
 		executeModchart = OpenFlAssets.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.lua");
 
-		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(songLowercase + "/modchart"));
+		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
 
 		#if desktop
 		// Making difficulty text for Discord Rich Presence.
